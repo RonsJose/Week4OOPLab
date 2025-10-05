@@ -3,14 +3,14 @@ package ie.atu;
 public class Student {
     String name;
     String email;
-    String studentID;
+    String course;
 
     public  Student()
     {
         System.out.println();
         this.name = "";
         this.email = "";
-        this.studentID = "";
+        this.course = "";
     }
 
     public String getName() {
@@ -29,11 +29,19 @@ public class Student {
         this.email = email;
     }
 
-    public String getStudentID() {
-        return studentID;
+    public String getCourse() {
+        return course;
     }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "Name:'" + name + '\'' +
+                ", Email:'" + email + '\'' +
+                ", Course:'" + course + '\'' ;
     }
 }
+

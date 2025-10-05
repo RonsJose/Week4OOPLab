@@ -21,16 +21,23 @@ public class StudentApp {
             String name = sc.nextLine();
             System.out.println("Please enter your email: ");
             String email = sc.nextLine();
-            System.out.println("Please enter your studentID: ");
-            String studentID = sc.nextLine();
+            System.out.println("Please enter your course: ");
+            String course = sc.nextLine();
 
             student1= new Student();
             student1.setName(name);
             student1.setEmail(email);
-            student1.setStudentID(studentID);
+            student1.setCourse(course);
             studentsList.add(student1);
 
             count++;
         }
+
+        System.out.println("Student List: ");
+        for(Student student : studentsList)
+        {
+            System.out.println(student);
+        }
+
     }
 }
