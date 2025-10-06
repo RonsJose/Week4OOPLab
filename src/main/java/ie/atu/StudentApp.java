@@ -18,7 +18,7 @@ public class StudentApp {
         studentNum = sc.nextInt();
         sc.nextLine();
 
-        //Inputs for name,email,course
+        //Inputs for name,email,courseS
         while(count<studentNum)
         {
             System.out.println("Please enter your name: ");
@@ -29,13 +29,12 @@ public class StudentApp {
             //Check for repeated email
             for(Student student:studentsList)
             {
-                String temp=student.getEmail();
-                if(temp.toLowerCase().equals(email.toLowerCase()))
+                while(student.getEmail().toLowerCase().equals(email.toLowerCase()))
                 {
                     System.out.println("Please enter another email:" );
                     email = sc.nextLine();
-                    break;
                 }
+
             }
 
             System.out.println("Please enter your course: ");
@@ -60,4 +59,5 @@ public class StudentApp {
         }
 
     }
+
 }
