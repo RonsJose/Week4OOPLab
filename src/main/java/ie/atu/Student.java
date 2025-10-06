@@ -1,10 +1,12 @@
 package ie.atu;
 
 public class Student {
+
     String name;
     String email;
     String course;
 
+    //Constructor
     public  Student()
     {
         System.out.println();
@@ -13,6 +15,7 @@ public class Student {
         this.course = "";
     }
 
+    //Getters and setters
     public String getName() {
         return name;
     }
@@ -37,6 +40,7 @@ public class Student {
         this.course = course;
     }
 
+    //Generated toString method that overrides the standard one
     @Override
     public String toString() {
         return "Name:'" + name + '\'' +
