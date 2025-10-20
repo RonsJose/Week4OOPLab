@@ -2,3 +2,7 @@ rons,rons@,software
 james,james@,hardware
 james,james@,mech
 john,james@,maths
+78,gi@,both
+90,pk,m
+%qwe,kevin@,software
+J*(nny,j@,physics

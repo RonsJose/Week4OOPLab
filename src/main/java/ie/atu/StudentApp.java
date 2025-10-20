@@ -37,24 +37,37 @@ public class StudentApp {
         //Inputs for name,email,courseS
         while(count<studentNum)
         {
-            System.out.println("Please enter your name: ");
-            String name = sc.nextLine().trim();
-            System.out.println("Please enter your email: ");
-            String email = sc.nextLine().trim();
-
-            //Check for repeated email
-            for(Student student:studentsList)
+            String name;
+            String email;
+            String course;
+            while(true)
             {
-                while(student.getEmail().toLowerCase().equals(email.toLowerCase()))
+                try //Incase something goes wrong while trying to collect user info
                 {
-                    System.out.println("Please enter another email:" );
+                    System.out.println("Please enter your name: ");
+                    name = sc.nextLine().trim();
+                    System.out.println("Please enter your email: ");
                     email = sc.nextLine().trim();
+
+                    //Check for repeated email
+                    for(Student student:studentsList)
+                    {
+                        while(student.getEmail().toLowerCase().equals(email.toLowerCase()))
+                        {
+                            System.out.println("Please enter another email:" );
+                            email = sc.nextLine().trim();
+                        }
+
+                    }
+
+                    System.out.println("Please enter your course: ");
+                    course = sc.nextLine().trim();
+                    break;
+                }catch(Exception e)
+                {
+                    System.out.println("Invalid input" + e.getMessage());
                 }
-
             }
-
-            System.out.println("Please enter your course: ");
-            String course = sc.nextLine().trim();
 
 
             //Populating the class
