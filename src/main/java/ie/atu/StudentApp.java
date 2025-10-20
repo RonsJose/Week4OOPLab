@@ -20,11 +20,12 @@ public class StudentApp {
             System.out.println("Please enter the number of students: ");
             String studentNumStr = sc.nextLine().trim();
 
+            //Ensures that the inputed string is a number
             try {
-                studentNum = Integer.parseInt(studentNumStr);
+                studentNum = Integer.parseInt(studentNumStr); //Attempting to parse to studentNum
                 System.out.println("Number of students: " + studentNum);
                 break;
-            } catch (NumberFormatException e)
+            } catch (NumberFormatException e)//Error handling
             {
                 System.out.println(" Invalid input " + e.getMessage());
             }
@@ -63,6 +64,7 @@ public class StudentApp {
             student1.setCourse(course);
             studentsList.add(student1);
 
+            //Writing data to file
             try(PrintWriter out= new PrintWriter(new FileWriter(fileName, true)))
             {
                 out.println(name+","+email+","+course);
@@ -75,12 +77,16 @@ public class StudentApp {
             count++;
         }
 
+        BufferedReader br = null;
+
+        //Reading data from file
         try
         {
             FileReader neverUsed= new FileReader("students.txt");
-            BufferedReader br=new BufferedReader(neverUsed);
+             br=new BufferedReader(neverUsed);
             System.out.println("Contents of students.txt:");
             String line;
+            //Going through file line by line for data
             while((line = br.readLine())!=null)
                 {
                 System.out.println(" - "+line);
@@ -88,6 +94,18 @@ public class StudentApp {
         }catch (IOException ex)
         {
             System.out.println("Could not read from file: " + ex.getMessage());
+        }
+        finally
+        {
+            //Checks to see if the stream is closed
+            if (br != null)
+            {
+                try {
+                    br.close(); //Attempts to close stream
+                } catch (IOException closeEx) {
+                    System.out.println("Could not close file:  " + closeEx.getMessage());
+                }
+            }
         }
 
         //Printing out student list
