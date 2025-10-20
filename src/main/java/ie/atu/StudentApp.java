@@ -1,4 +1,5 @@
 package ie.atu;
+import java.io.*;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -29,14 +30,16 @@ public class StudentApp {
             }
         }
 
+        System.out.println("Please enter the file name (e.g., students.txt): ");
+        String fileName = sc.nextLine().trim();
 
         //Inputs for name,email,courseS
         while(count<studentNum)
         {
             System.out.println("Please enter your name: ");
-            String name = sc.nextLine();
+            String name = sc.nextLine().trim();
             System.out.println("Please enter your email: ");
-            String email = sc.nextLine();
+            String email = sc.nextLine().trim();
 
             //Check for repeated email
             for(Student student:studentsList)
@@ -44,13 +47,13 @@ public class StudentApp {
                 while(student.getEmail().toLowerCase().equals(email.toLowerCase()))
                 {
                     System.out.println("Please enter another email:" );
-                    email = sc.nextLine();
+                    email = sc.nextLine().trim();
                 }
 
             }
 
             System.out.println("Please enter your course: ");
-            String course = sc.nextLine();
+            String course = sc.nextLine().trim();
 
 
             //Populating the class
@@ -60,7 +63,31 @@ public class StudentApp {
             student1.setCourse(course);
             studentsList.add(student1);
 
+            try(PrintWriter out= new PrintWriter(new FileWriter(fileName, true)))
+            {
+                out.println(name+","+email+","+course);
+                System.out.println("Saved to "+fileName);
+            } catch (IOException ex)
+            {
+                System.out.println("Could not write to file " + ex.getMessage());
+            }
+
             count++;
+        }
+
+        try
+        {
+            FileReader neverUsed= new FileReader("students.txt");
+            BufferedReader br=new BufferedReader(neverUsed);
+            System.out.println("Contents of students.txt:");
+            String line;
+            while((line = br.readLine())!=null)
+                {
+                System.out.println(" - "+line);
+                }
+        }catch (IOException ex)
+        {
+            System.out.println("Could not read from file: " + ex.getMessage());
         }
 
         //Printing out student list
