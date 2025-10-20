@@ -14,9 +14,21 @@ public class StudentApp {
 
         //Counting system to determine the amount of times the code needs to be run
         int studentNum=0,count=0;
-        System.out.println("Please enter the number of students: ");
-        studentNum = sc.nextInt();
-        sc.nextLine();
+        while(true)
+        {
+            System.out.println("Please enter the number of students: ");
+            String studentNumStr = sc.nextLine().trim();
+
+            try {
+                studentNum = Integer.parseInt(studentNumStr);
+                System.out.println("Number of students: " + studentNum);
+                break;
+            } catch (NumberFormatException e)
+            {
+                System.out.println(" Invalid input " + e.getMessage());
+            }
+        }
+
 
         //Inputs for name,email,courseS
         while(count<studentNum)
